@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.cpp                                        :+:      :+:    :+:   */
+/*   Contact.class.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisidore <aisidore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 19:00:43 by aisidore          #+#    #+#             */
-/*   Updated: 2025/04/28 19:03:53 by aisidore         ###   ########.fr       */
+/*   Updated: 2025/04/29 16:34:56 by aisidore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.hpp"
+#include "Contact.class.hpp"
 
-// Constructeur vide
-Contact::Contact() {
-    // Rien pour l'instant
+Contact::Contact(void) {
+    return;
+}
+
+~Contact::Contact(void) {
+    return;
 }
 
 // Méthode d'affichage

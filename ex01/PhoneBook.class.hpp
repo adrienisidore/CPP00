@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.class.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisidore <aisidore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/28 19:00:53 by aisidore          #+#    #+#             */
-/*   Updated: 2025/04/28 19:03:33 by aisidore         ###   ########.fr       */
+/*   Created: 2025/04/28 18:45:57 by aisidore          #+#    #+#             */
+/*   Updated: 2025/04/29 16:18:44 by aisidore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+// PhoneBook.hpp
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
 
-// Constructeur vide
-PhoneBook::PhoneBook() {
-    // Rien à initialiser pour l'instant
-}
+#include "Contact.class.hpp"
+
+class PhoneBook {
+public:
+    PhoneBook(void);
+	~PhoneBook(void);
+private:
+    Contact contacts[8];
+
+};
+
+#endif
