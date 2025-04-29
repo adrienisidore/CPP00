@@ -6,25 +6,28 @@
 /*   By: aisidore <aisidore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 18:46:32 by aisidore          #+#    #+#             */
-/*   Updated: 2025/04/29 16:33:56 by aisidore         ###   ########.fr       */
+/*   Updated: 2025/04/29 18:16:25 by aisidore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // Contact.hpp
-#ifndef CONTACT_HPP
-#define CONTACT_HPP
+#ifndef CONTACT_CLASS_HPP
+#define CONTACT_CLASS_HPP
 
 #include <iostream>//for what ?
 #include <string>//for what ?
+#include <cstdlib>//pour exit (maybe useless)
 
 class Contact {
 public:
-    // Constructeur
     Contact(void);
 	~Contact(void);
 
-    // Méthode pour afficher un message
-    void display() const;
+	std::string f_name;
+	std::string l_name;
+	std::string n_name;
+	std::string number;
+	std::string secret;
 };
 
 #endif

@@ -6,14 +6,16 @@
 #    By: aisidore <aisidore@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/28 13:58:16 by aisidore          #+#    #+#              #
-#    Updated: 2025/04/29 16:31:38 by aisidore         ###   ########.fr        #
+#    Updated: 2025/04/29 17:24:14 by aisidore         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = phonebook
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = main.cpp
+SRC = main.cpp \
+	  Contact.class.cpp \
+	  PhoneBook.class.cpp
 OBJ = $(SRC:%.cpp=objets/%.o)
 
 all: $(NAME)
