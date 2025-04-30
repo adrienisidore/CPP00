@@ -24,9 +24,10 @@
 //ca enclenche de nouveau EOF ce qui me fait sortir du programme (2eme else if)
 //Ctrl+D = le flux est terminé pour toute la durée du programme
 
+//Penser à supprimer l'exécutable et le dossier objet. Idem pour ex00
 int main(void) {
     
-	PhoneBook	phonebook; // Appel au constructeur
+	PhoneBook	phonebook(0); // Appel au constructeur
 	std::string buff;//Proteger buff ou on laisse C++ gerer sa taille trop grande ?
 	
 	while (1)
@@ -40,7 +41,6 @@ int main(void) {
 		{
 			if (std::cin.eof())
 				std::cout << "..EOF detected";	
-			std::cout << "..Exiting program." << std::endl;
 			break;
 		}
 	}

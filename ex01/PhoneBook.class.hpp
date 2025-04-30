@@ -17,7 +17,7 @@
 
 class PhoneBook {
 public:
-    PhoneBook(void);
+    PhoneBook(int pi);
 	~PhoneBook(void);
 	
 	void	ft_add(void);
@@ -29,7 +29,7 @@ private:
 	int			i;
 	bool		ft_empty(const std::string& prompt, std::string& dest);
 	std::string	ft_trunc(const std::string& str);
-	void		ft_printab(void);
+	void		ft_printab(void) const;
 	void		ft_print(const size_t idx);
 
 };

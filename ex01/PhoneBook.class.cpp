@@ -12,11 +12,13 @@
 
 #include "PhoneBook.class.hpp"
 
-PhoneBook::PhoneBook(void): i(0) {
+//i n'est pas un attribut constant, mais c'est pas grave
+PhoneBook::PhoneBook(int pi): i(pi) {
     return;
 }
 
 PhoneBook::~PhoneBook(void) {
+	std::cout << "..Exiting program." << std::endl;
     return;
 }
 
@@ -49,12 +51,17 @@ void PhoneBook::ft_add(void) {
 	if (ft_empty("Last name", this->new_contact.l_name)) return;
 	if (ft_empty("Nickname", this->new_contact.n_name)) return;
 	if (ft_empty("Phone number", this->new_contact.number)) return;
+	if (this->new_contact.number.find_first_not_of("0123456789") != std::string::npos)
+	{
+		std::cout << "..Phone number can only contain numbers!" << std::endl;
+		return;
+	}
 	if (ft_empty("Darkest secret", this->new_contact.secret)) return;
 
 	//Gerer les espaces avant et apres ?
 	this->contacts[this->i] = this->new_contact;
 	this->i = (this->i + 1) % 8;
-	return ;
+	return;
 }
 
 
@@ -64,18 +71,17 @@ std::string PhoneBook::ft_trunc(const std::string& str) {
 	return str;
 }
 
-void	PhoneBook::ft_printab(void) {
+void	PhoneBook::ft_printab(void) const {
 	std::cout << std::setw(10) << "Index" << "|"
 	<< std::setw(10) << "First Name" << "|"
 	<< std::setw(10) << "Last Name" << "|"
-	<< std::setw(10) << "Nickname";
+	<< std::setw(10) << "Nickname" << "|";
 }
 
 void	PhoneBook::ft_print(const size_t idx) {
 
-	this->ft_printab();
-	std::cout << "|" 
-	<< std::setw(10) << ft_trunc("Phone number") << "|"
+	this->ft_printab(); 
+	std::cout << std::setw(10) << ft_trunc("Phone number") << "|"
 	<< std::setw(10) << ft_trunc("Darkest secret") << "|"
 	<< std::endl
 	<< std::setw(10) << idx << "|"
@@ -83,7 +89,7 @@ void	PhoneBook::ft_print(const size_t idx) {
 	<< std::setw(10) << ft_trunc(this->contacts[idx].l_name) << "|"
 	<< std::setw(10) << ft_trunc(this->contacts[idx].n_name) << "|"
 	<< std::setw(10) << ft_trunc(this->contacts[idx].number) << "|"
-	<< std::setw(10) << ft_trunc(this->contacts[idx].secret) << std::endl;
+	<< std::setw(10) << ft_trunc(this->contacts[idx].secret) << "|" << std::endl;
 }
 
 // Penser à ajouter le . en fin de troncage
@@ -99,7 +105,7 @@ void PhoneBook::ft_search(void) {
 		std::cout << std::endl << std::setw(10) << j << "|"
 		          << std::setw(10) << ft_trunc(this->contacts[j].f_name) << "|"
 		          << std::setw(10) << ft_trunc(this->contacts[j].l_name) << "|"
-		          << std::setw(10) << ft_trunc(this->contacts[j].n_name) << std::endl;
+		          << std::setw(10) << ft_trunc(this->contacts[j].n_name) << "|";
 	}
 	std::cout << std::endl << "Index:";
 	std::getline(std::cin, idx);
