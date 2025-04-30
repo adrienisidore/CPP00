@@ -20,24 +20,30 @@ PhoneBook::~PhoneBook(void) {
     return;
 }
 
+bool PhoneBook::ft_empty(const std::string& prompt, std::string& dest) {
+	std::cout << prompt <<":";
+	std::getline(std::cin, dest);
+	if (std::cin.eof()) {std::cout << std::endl;}
+	if (dest.empty()) {// && !std::cin.eof()
+		std::cout << ".." << prompt << " cannot be empty!" << std::endl;}
+	return dest.empty();
+}
+
 //contacts est un attribut membre de PhoneBook donc je peux y acceder
 //directement depuis une fonction sans le mettre en parametre
-void PhoneBook::ft_add(void)  {
-	std::cout << "First name:";
-	if (!std::getline(std::cin >> std::ws, this->contacts[i].f_name)) {
-		return;
-	}//faire pareil pour tous les autres
-	std::cout << "Last name:";
-	std::getline(std::cin >> std::ws, this->contacts[i].l_name);
-	std::cout << "Nickname:";
-	std::getline(std::cin >> std::ws, this->contacts[i].n_name);
-	std::cout << "Phone number:";
-	std::getline(std::cin >> std::ws, this->contacts[i].number);
-	std::cout << "Darkest secret:";
-	std::getline(std::cin >> std::ws, this->contacts[i].secret);
-	i = (i + 1) % 8;
-    return;
+void PhoneBook::ft_add(void) {
+	if (ft_empty("First name", this->new_contact.f_name)) return;
+	if (ft_empty("Last name", this->new_contact.l_name)) return;
+	if (ft_empty("Nickname", this->new_contact.n_name)) return;
+	if (ft_empty("Phone number", this->new_contact.number)) return;
+	if (ft_empty("Darkest secret", this->new_contact.secret)) return;
+
+	//Gerer les espaces avant et apres ?
+	this->contacts[this->i] = this->new_contact;
+	this->i = (this->i + 1) % 8;
+	return ;
 }
+
 
 void PhoneBook::ft_search(void)  {
     return;

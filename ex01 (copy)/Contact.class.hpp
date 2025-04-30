@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.class.hpp                                :+:      :+:    :+:   */
+/*   Contact.class.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisidore <aisidore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/28 18:45:57 by aisidore          #+#    #+#             */
-/*   Updated: 2025/04/29 18:51:57 by aisidore         ###   ########.fr       */
+/*   Created: 2025/04/28 18:46:32 by aisidore          #+#    #+#             */
+/*   Updated: 2025/04/29 18:16:25 by aisidore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_CLASS_HPP
-#define PHONEBOOK_CLASS_HPP
+// Contact.hpp
+#ifndef CONTACT_CLASS_HPP
+#define CONTACT_CLASS_HPP
 
-#include "Contact.class.hpp"
+#include <iostream>//for what ?
+#include <string>//for what ?
+#include <cstdlib>//pour exit (maybe useless)
 
-class PhoneBook {
+class Contact {
 public:
-    PhoneBook(void);
-	~PhoneBook(void);
-	
-	void	ft_add(void);
-	void	ft_search(void);
-	
-private:
-	Contact contacts[8];
-	Contact	new_contact;
-	int		i;
-	bool	ft_empty(const std::string& prompt, std::string& dest);
+    Contact(void);
+	~Contact(void);
 
+	std::string f_name;
+	std::string l_name;
+	std::string n_name;
+	std::string number;
+	std::string secret;
 };
 
 #endif

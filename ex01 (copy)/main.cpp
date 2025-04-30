@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.class.hpp                                :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisidore <aisidore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/28 18:45:57 by aisidore          #+#    #+#             */
-/*   Updated: 2025/04/29 18:51:57 by aisidore         ###   ########.fr       */
+/*   Created: 2025/04/28 18:58:05 by aisidore          #+#    #+#             */
+/*   Updated: 2025/04/29 19:00:48 by aisidore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_CLASS_HPP
-#define PHONEBOOK_CLASS_HPP
+#include <iostream>
+#include <string>
 
-#include "Contact.class.hpp"
+int main() {
+    std::string input;
 
-class PhoneBook {
-public:
-    PhoneBook(void);
-	~PhoneBook(void);
-	
-	void	ft_add(void);
-	void	ft_search(void);
-	
-private:
-	Contact contacts[8];
-	Contact	new_contact;
-	int		i;
-	bool	ft_empty(const std::string& prompt, std::string& dest);
+    std::cout << "Enter something: ";
+    std::getline(std::cin, input); // ignore uniquement les espaces en début
 
-};
+    if (input.empty()) {
+        std::cout << "Error: input is empty." << std::endl;
+    } else {
+        std::cout << "You entered: \"" << input << "\"" << std::endl;
+    }
 
-#endif
+    return 0;
+}
+
+

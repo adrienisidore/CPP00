@@ -13,41 +13,32 @@
 // main.cpp
 #include "PhoneBook.class.hpp"
 
+//Ctrl+D = EOF : on arrete de lire 5desactive std//cin) 
+//et .eof() == true. Ce n'est pas pareil qu'avoir une
+//chaine vide. Chaine vide est valide comme string, et on pourra faire appel à getline
+//plus tard car le fichier temporaire est encore ouvert.
+
+//if (std::cin.eof()) {std::cin.clear();}//le buffer std::cin de nouveau utilisable
+//cependant std::cin reste vide (plus rien à lire car std::cin definitivement ferme)
+//donc lorsque je fais getline dans le main()
+//ca enclenche de nouveau EOF ce qui me fait sortir du programme (2eme else if)
+//Ctrl+D = le flux est terminé pour toute la durée du programme
+
 int main() {
     
-	PhoneBook phonebook; // Appel au constructeur
-	std::string buff;//Proteger buff
+	PhoneBook	phonebook; // Appel au constructeur
+	std::string buff;//Proteger buff ou on laisse C++ gerer sa taille trop grande ?
 	
 	while (1)
-	{
-		std::cout << "Phonebook:";
-		if (!std::getline(std::cin, buff)) {
-			//std::getline(std::cin >> std::ws, buff); supprime espaces avant saisie
-			std::cout << std::endl << "..Exiting program." << std::endl;
-			break;
-		}
-		// std::getline(std::cin, buff);
-		// char buff[256];
-		// std::cin.getline(buff, 256); mais ca retire pas espaces blancs et c proche du C
-		// std::strcmp(buff, "EXIT")
+	{		
+		std::cout << "Phonebook:"; std::getline(std::cin, buff);
 		if (buff == "ADD")
-		{
-			std::cout << buff << std::endl;
 			phonebook.ft_add();
-		}
 		else if (buff == "SEARCH")
-		{
-			std::cout << buff << std::endl;
 			phonebook.ft_search();
-		}
-		else if (std::cin.eof() || buff == "EXIT")
-		{//CTRL+D. L'ajouter a d'autres endroits ?
-            // std::cin.clear();//utile si je veux effacer le flag d'erreur (par ex ignorer une mauvaise entree utilisateur)
-            std::cout << std::endl << "..Exiting program." << std::endl;
-            break ;
-        }
+		if (std::cin.eof() || buff == "EXIT")
+            std::cout << "..Exiting program." << std::endl; break;
 	}
-
     return (0);//le destructeur est appele. A chaque fin de fonction
 	//que ce soit un main ou autre
 }
