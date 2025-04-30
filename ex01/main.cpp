@@ -38,6 +38,8 @@ int main(void) {
 			phonebook.ft_search();
 		if (std::cin.eof() || buff == "EXIT")
 		{
+			if (std::cin.eof())
+				std::cout << "..EOF detected";	
 			std::cout << "..Exiting program." << std::endl;
 			break;
 		}

@@ -31,7 +31,8 @@ bool PhoneBook::ft_empty(const std::string& prompt, std::string& dest) {
 	//c'est qu'il n'a pas trouvé autre chose que des espaces et des tabultations 
 	if (dest.empty() || dest.find_first_not_of(" \t") == std::string::npos)
 	{
-		std::cout << ".." << prompt << " cannot be empty!" << std::endl;
+		if (!std::cin.eof())
+			std::cout << ".." << prompt << " cannot be empty!" << std::endl;
 		return (true);
 	}
 	//On reformate new_contact pour retirer les espaces avant et après
@@ -63,26 +64,51 @@ std::string PhoneBook::ft_trunc(const std::string& str) {
 	return str;
 }
 
+void	PhoneBook::ft_printab(void) {
+	std::cout << std::setw(10) << "Index" << "|"
+	<< std::setw(10) << "First Name" << "|"
+	<< std::setw(10) << "Last Name" << "|"
+	<< std::setw(10) << "Nickname";
+}
+
+void	PhoneBook::ft_print(const size_t idx) {
+
+	this->ft_printab();
+	std::cout << "|" 
+	<< std::setw(10) << ft_trunc("Phone number") << "|"
+	<< std::setw(10) << ft_trunc("Darkest secret") << "|"
+	<< std::endl
+	<< std::setw(10) << idx << "|"
+	<< std::setw(10) << ft_trunc(this->contacts[idx].f_name) << "|"
+	<< std::setw(10) << ft_trunc(this->contacts[idx].l_name) << "|"
+	<< std::setw(10) << ft_trunc(this->contacts[idx].n_name) << "|"
+	<< std::setw(10) << ft_trunc(this->contacts[idx].number) << "|"
+	<< std::setw(10) << ft_trunc(this->contacts[idx].secret) << std::endl;
+}
+
 // Penser à ajouter le . en fin de troncage
 void PhoneBook::ft_search(void) {
-	std::string buff;
+	std::string idx;
+	size_t		index;
 
-	std::cout << std::setw(10) << "Index" << "|"
-	          << std::setw(10) << "First Name" << "|"
-	          << std::setw(10) << "Last Name" << "|"
-	          << std::setw(10) << "Nickname" << std::endl;
+	this->ft_printab();
 	for (int j = 0; j < 8; ++j)
 	{
 		if (this->contacts[j].f_name.empty())
 			continue; // Ignore les emplacements non utilisés
-		std::cout << std::setw(10) << j << "|"
+		std::cout << std::endl << std::setw(10) << j << "|"
 		          << std::setw(10) << ft_trunc(this->contacts[j].f_name) << "|"
 		          << std::setw(10) << ft_trunc(this->contacts[j].l_name) << "|"
 		          << std::setw(10) << ft_trunc(this->contacts[j].n_name) << std::endl;
 	}
 	std::cout << std::endl << "Index:";
-	std::getline(std::cin, buff);
-	//Si le user entre une chaine vide, avec des espaces et \t ou autre chose que 01234567
-	//Alors message d'erreur et on retourne dans PhoneBook
+	std::getline(std::cin, idx);
+	if (idx.size() != 1 || idx[0] < '0' || idx[0] > '7')
+		std::cout << "..Invalid index!" << std::endl;//Faire un atoi façon C++ pour rendre le truc plus flexible ?
+	else 
+	{
+		index = static_cast<size_t>(idx[0] - '0');
+		ft_print(index);
+	}
 	return ;
 }

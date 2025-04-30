@@ -28,6 +28,7 @@ public:
 	std::string n_name;
 	std::string number;
 	std::string secret;
+
 };
 
 #endif
