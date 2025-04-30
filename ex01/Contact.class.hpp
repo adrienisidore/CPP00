@@ -14,9 +14,9 @@
 #ifndef CONTACT_CLASS_HPP
 #define CONTACT_CLASS_HPP
 
-#include <iostream>//for what ?
-#include <string>//for what ?
-#include <cstdlib>//pour exit (maybe useless)
+#include <iostream>
+#include <iomanip> // pour setw
+#include <string>
 
 class Contact {
 public:

@@ -24,7 +24,7 @@
 //ca enclenche de nouveau EOF ce qui me fait sortir du programme (2eme else if)
 //Ctrl+D = le flux est terminé pour toute la durée du programme
 
-int main() {
+int main(void) {
     
 	PhoneBook	phonebook; // Appel au constructeur
 	std::string buff;//Proteger buff ou on laisse C++ gerer sa taille trop grande ?
@@ -37,7 +37,10 @@ int main() {
 		else if (buff == "SEARCH")
 			phonebook.ft_search();
 		if (std::cin.eof() || buff == "EXIT")
-            std::cout << "..Exiting program." << std::endl; break;
+		{
+			std::cout << "..Exiting program." << std::endl;
+			break;
+		}
 	}
     return (0);//le destructeur est appele. A chaque fin de fonction
 	//que ce soit un main ou autre

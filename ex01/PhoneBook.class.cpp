@@ -21,12 +21,24 @@ PhoneBook::~PhoneBook(void) {
 }
 
 bool PhoneBook::ft_empty(const std::string& prompt, std::string& dest) {
+	size_t start;
+	size_t end;
+
 	std::cout << prompt <<":";
 	std::getline(std::cin, dest);
 	if (std::cin.eof()) {std::cout << std::endl;}
-	if (dest.empty()) {// && !std::cin.eof()
-		std::cout << ".." << prompt << " cannot be empty!" << std::endl;}
-	return dest.empty();
+	//si find_first_not_of va jusqu'à la taille maximale d'une string (npos),
+	//c'est qu'il n'a pas trouvé autre chose que des espaces et des tabultations 
+	if (dest.empty() || dest.find_first_not_of(" \t") == std::string::npos)
+	{
+		std::cout << ".." << prompt << " cannot be empty!" << std::endl;
+		return (true);
+	}
+	//On reformate new_contact pour retirer les espaces avant et après
+	start = dest.find_first_not_of(" \t");
+	end = dest.find_last_not_of(" \t");
+	dest = dest.substr(start, end - start + 1);
+	return (false);//booléen vrai si empty, faux sinon
 }
 
 //contacts est un attribut membre de PhoneBook donc je peux y acceder
@@ -45,6 +57,32 @@ void PhoneBook::ft_add(void) {
 }
 
 
-void PhoneBook::ft_search(void)  {
-    return;
+std::string PhoneBook::ft_trunc(const std::string& str) {
+	if (str.length() > 10)
+		return str.substr(0, 9) + ".";
+	return str;
+}
+
+// Penser à ajouter le . en fin de troncage
+void PhoneBook::ft_search(void) {
+	std::string buff;
+
+	std::cout << std::setw(10) << "Index" << "|"
+	          << std::setw(10) << "First Name" << "|"
+	          << std::setw(10) << "Last Name" << "|"
+	          << std::setw(10) << "Nickname" << std::endl;
+	for (int j = 0; j < 8; ++j)
+	{
+		if (this->contacts[j].f_name.empty())
+			continue; // Ignore les emplacements non utilisés
+		std::cout << std::setw(10) << j << "|"
+		          << std::setw(10) << ft_trunc(this->contacts[j].f_name) << "|"
+		          << std::setw(10) << ft_trunc(this->contacts[j].l_name) << "|"
+		          << std::setw(10) << ft_trunc(this->contacts[j].n_name) << std::endl;
+	}
+	std::cout << std::endl << "Index:";
+	std::getline(std::cin, buff);
+	//Si le user entre une chaine vide, avec des espaces et \t ou autre chose que 01234567
+	//Alors message d'erreur et on retourne dans PhoneBook
+	return ;
 }

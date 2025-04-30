@@ -24,10 +24,11 @@ public:
 	void	ft_search(void);
 	
 private:
-	Contact contacts[8];
-	Contact	new_contact;
-	int		i;
-	bool	ft_empty(const std::string& prompt, std::string& dest);
+	Contact 	contacts[8];
+	Contact		new_contact;
+	int			i;
+	bool		ft_empty(const std::string& prompt, std::string& dest);
+	std::string	ft_trunc(const std::string& str);
 
 };
 
