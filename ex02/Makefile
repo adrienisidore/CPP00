@@ -6,14 +6,16 @@
 #    By: aisidore <aisidore@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/28 13:58:16 by aisidore          #+#    #+#              #
-#    Updated: 2025/04/29 17:24:14 by aisidore         ###   ########.fr        #
+#    Updated: 2025/06/10 19:04:39 by aisidore         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = phonebook
+NAME = account
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = main.cpp
+SRC = tests.cpp \
+	  Account.cpp
+
 OBJ = $(SRC:%.cpp=objets/%.o)
 
 all: $(NAME)
