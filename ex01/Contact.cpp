@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.class.cpp                                  :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisidore <aisidore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 19:00:43 by aisidore          #+#    #+#             */
-/*   Updated: 2025/04/29 17:07:11 by aisidore         ###   ########.fr       */
+/*   Updated: 2025/06/18 15:17:43 by aisidore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.class.hpp"
+#include "Contact.hpp"
 
 Contact::Contact(void) {
-	//Initialiser toutes les valeurs vides d'un contact
     return;
 }
 

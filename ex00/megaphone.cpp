@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Megaphone.cpp                                      :+:      :+:    :+:   */
+/*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisidore <aisidore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 13:42:29 by aisidore          #+#    #+#             */
-/*   Updated: 2025/04/28 18:44:55 by aisidore         ###   ########.fr       */
+/*   Updated: 2025/06/18 15:03:43 by aisidore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 
 int		main(int ac, char **av)
 {
-	//Supprimer les .o
-	int	i = 0;
-	int	j = -1;
+	int	i;
+	int	j;
 
 	if (ac == 1)
 	{
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 		return (0);
 	}
+	i = 0;
 	while (av[++i])
 	{
 		j = -1;

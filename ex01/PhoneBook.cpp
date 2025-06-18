@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.class.cpp                                :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisidore <aisidore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 19:00:53 by aisidore          #+#    #+#             */
-/*   Updated: 2025/04/29 19:04:11 by aisidore         ###   ########.fr       */
+/*   Updated: 2025/06/18 15:24:05 by aisidore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.class.hpp"
+#include "PhoneBook.hpp"
 
-//i n'est pas un attribut constant, mais c'est pas grave
 PhoneBook::PhoneBook(int pi): i(pi) {
     return;
 }
@@ -57,8 +56,6 @@ void PhoneBook::ft_add(void) {
 		return;
 	}
 	if (ft_empty("Darkest secret", this->new_contact.secret)) return;
-
-	//Gerer les espaces avant et apres ?
 	this->contacts[this->i] = this->new_contact;
 	this->i = (this->i + 1) % 8;
 	return;
@@ -92,7 +89,6 @@ void	PhoneBook::ft_print(const size_t idx) {
 	<< std::setw(10) << ft_trunc(this->contacts[idx].secret) << "|" << std::endl;
 }
 
-// Penser à ajouter le . en fin de troncage
 void PhoneBook::ft_search(void) {
 	std::string idx;
 	size_t		index;
@@ -110,7 +106,7 @@ void PhoneBook::ft_search(void) {
 	std::cout << std::endl << "Index:";
 	std::getline(std::cin, idx);
 	if (idx.size() != 1 || idx[0] < '0' || idx[0] > '7')
-		std::cout << "..Invalid index!" << std::endl;//Faire un atoi façon C++ pour rendre le truc plus flexible ?
+		std::cout << "..Invalid index!" << std::endl;
 	else 
 	{
 		index = static_cast<size_t>(idx[0] - '0');
