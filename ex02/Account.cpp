@@ -6,12 +6,12 @@
 /*   By: aisidore <aisidore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 18:29:26 by aisidore          #+#    #+#             */
-/*   Updated: 2025/06/18 14:12:06 by aisidore         ###   ########.fr       */
+/*   Updated: 2025/06/18 15:10:00 by aisidore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Account.hpp"
-# include <iostream>//Je l'ai ajoute
+# include <iostream>
 # include <ctime>//timestamp
 # include <iomanip> // pour setw
 
@@ -76,8 +76,7 @@ void	Account::_displayTimestamp(void)
 			  << std::setw(2) << ltm->tm_mday << '_'
 			  << std::setw(2) << ltm->tm_hour
 			  << std::setw(2) << ltm->tm_min
-			  << std::setw(2) << ltm->tm_sec
-			  << "] ";
+			  << std::setw(2) << ltm->tm_sec << "] ";
 }
 
 void	Account::displayAccountsInfos(void)
@@ -108,19 +107,15 @@ void	Account::makeDeposit(int deposit)
 bool	Account::makeWithdrawal(int withdrawal)
 {
 	Account::_displayTimestamp();
-	std::cout << "index:" << this->_accountIndex
-	          << ";p_amount:" << this->_amount
-	          << ";withdrawal:";
-	if (withdrawal <= this->_amount)
+	std::cout << "index:" << this->_accountIndex << ";p_amount:" << this->_amount << ";withdrawal:";
+	if (this->_amount >= withdrawal)
 	{
-		this->_amount -= withdrawal;
-		Account::_totalNbWithdrawals++;
-		Account::_totalAmount -= withdrawal;
 		this->_nbWithdrawals++;
-		std::cout << withdrawal
-		          << ";amount:" << this->_amount
-		          << ";nb_withdrawals:" << this->_nbWithdrawals
-		          << std::endl;
+		this->_amount -= withdrawal;
+		Account::_totalAmount -= withdrawal;
+		Account::_totalNbWithdrawals++;
+		std::cout << withdrawal << ";amount:" << this->_amount
+		          << ";nb_withdrawals:" << this->_nbWithdrawals << std::endl;
 		return (true);
 	}
 	else
