@@ -12,10 +12,6 @@
 #ifndef __ACCOUNT_H__
 #define __ACCOUNT_H__
 
-#include <iostream>//Je l'ai ajoute
-#include <ctime>//timestamp
-#include <iomanip> // pour setw, useless ?
-
 // ************************************************************************** //
 //                               Account Class                                //
 // ************************************************************************** //
