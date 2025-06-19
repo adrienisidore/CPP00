@@ -1,10 +1,17 @@
-//Ctrl+D = EOF : on arrete de lire 5desactive std//cin) 
-//et .eof() == true. Ce n'est pas pareil qu'avoir une
-//chaine vide. Chaine vide est valide comme string, et on pourra faire appel à getline
-//plus tard car le fichier temporaire est encore ouvert.
+ex02 : il faut juste  refaire un main.cpp qui permettra d'afficher les memes choses
+que 19920104_091532.log (mais avec gettimeofday() d'aujourd'hui)
 
-//if (std::cin.eof()) {std::cin.clear();}//le buffer std::cin de nouveau utilisable
-//cependant std::cin reste vide (plus rien à lire car std::cin definitivement ferme)
-//donc lorsque je fais getline dans le main()
-//ca enclenche de nouveau EOF ce qui me fait sortir du programme (2eme else if)
-//Ctrl+D = le flux est terminé pour toute la durée du programme
+https://lodev.org/cgtutor/raycasting.html#Performance
+
+
+	while (dest.empty() || dest.find_first_not_of(" \t") == std::string::npos)
+	{
+		if (!std::cin.eof())
+		{
+			std::cout << ".." << prompt << " cannot be empty!" << std::endl;
+		}	
+		else
+			return (true);
+		std::cout << prompt <<":";
+		std::getline(std::cin, dest);//Ca oblige le user à finir d'entrer le contact
+	}
