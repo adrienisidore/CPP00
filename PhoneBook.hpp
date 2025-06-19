@@ -15,23 +15,23 @@
 
 #include "Contact.hpp"
 
-class PhoneBook {
-public:
-    PhoneBook(int pi);
-	~PhoneBook(void);
-	
-	void	ft_add(void);
-	void	ft_search(void);
-	
-private:
-	Contact 	contacts[8];
-	Contact		new_contact;
-	int			i;
-	//droit d'utiliser les références ?
-	bool		ft_empty(const std::string& prompt, std::string& dest);
-	std::string	ft_trunc(const std::string str);//&
-	void		ft_printab(void) const;
-	void		ft_print(const size_t idx);
+class PhoneBook
+{
+	public:
+		PhoneBook(int pi);
+		~PhoneBook(void);
+		
+		void	ft_add(void);
+		void	ft_search(void);
+		
+	private:
+		Contact 	contacts[8];
+		Contact		new_contact;
+		int			i;
+		bool		ft_save(const std::string prompt);
+		std::string	ft_trunc(const std::string str);
+		void		ft_printab(void) const;
+		void		ft_print(const size_t idx);
 
 };
 

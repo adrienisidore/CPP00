@@ -12,16 +12,16 @@
 
 #include "Contact.hpp"
 
-Contact::Contact(void) {
-	//Initialiser toutes les valeurs vides d'un contact
+Contact::Contact(void)
+{
     return;
 }
 
-Contact::~Contact(void) {
+Contact::~Contact(void)
+{
     return;
 }
 
-//Juste pour l'affichage dans SEARCH, 
 std::string Contact::ft_get(const std::string field) const {
     if (field == "First Name")
         return (this->f_name);
@@ -39,9 +39,9 @@ std::string Contact::ft_get(const std::string field) const {
 
 void Contact::ft_set(const std::string field, const std::string value)
 {
-    if (field == "First Name")
+    if (field == "First name")
         this->f_name = value;
-    else if (field == "Last Name")
+    else if (field == "Last name")
         this->l_name = value;
     else if (field == "Nickname")
         this->n_name = value;

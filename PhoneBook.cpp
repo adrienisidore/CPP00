@@ -13,83 +13,85 @@
 #include "PhoneBook.hpp"
 
 //i n'est pas un attribut constant, mais c'est pas grave
-PhoneBook::PhoneBook(int pi): i(pi) {
+PhoneBook::PhoneBook(int pi): i(pi)
+{
     return;
 }
 
-PhoneBook::~PhoneBook(void) {
+PhoneBook::~PhoneBook(void)
+{
 	std::cout << "..Exiting program." << std::endl;
     return;
 }
 
-bool PhoneBook::ft_empty(const std::string& prompt, std::string& dest) {
+bool PhoneBook::ft_save(const std::string prompt)
+{
+	std::string	value;
+	std::string	alpha;
+	size_t		start;
+	size_t		end;
 
-	//ON FAIT UN FT_SET QUI RENVOIE L'ADRESSE DE CHAQUE ATTRIBUT
 	std::cout << prompt <<":";
-	std::getline(std::cin, dest);
+	std::getline(std::cin, value);
 	if (std::cin.eof())
 		std::cout << std::endl;
-	//si find_first_not_of va jusqu'à la taille maximale d'une string (npos),
-	//c'est qu'il n'a pas trouvé autre chose que des espaces et des tabultations 
-	if (dest.empty() || dest.find_first_not_of(" \t") == std::string::npos)
+	if (value.empty() || value.find_first_not_of(" \t") == std::string::npos)
 	{
 		if (!std::cin.eof())
 			std::cout << ".." << prompt << " cannot be empty!" << std::endl;
 		return (true);
 	}
-
-	//On reformate new_contact pour retirer les espaces avant et après
-	size_t	start = dest.find_first_not_of(" \t");
-	size_t	end = dest.find_last_not_of(" \t");
-	dest = dest.substr(start, end - start + 1);
-	//à tester
-	//std::string	alphabetic = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	//if ((dest.find_first_of(" \t") != std::string::npos && prompt != "Darkest secret")
-	//	|| (dest.find_first_not_of(alphabetic) != std::string::npos && prompt != "Phone number"))
-	//{
-	//	std::cout << std::endl << "Enter a valid " << prompt << " !" << std::endl;
-	//	return (true);
-	//}
-	return (false);//booléen vrai si empty, faux sinon
-}
-
-//contacts est un attribut membre de PhoneBook donc je peux y acceder
-//directement depuis une fonction sans le mettre en parametre
-void PhoneBook::ft_add(void) {
-	//au lieu de return on pourrait faire le récursivité pour éviter
-	//de devoir retaper ADD dans le Terminal
-	if (ft_empty("First name", this->new_contact.f_name)) return;
-	if (ft_empty("Last name", this->new_contact.l_name)) return;
-	if (ft_empty("Nickname", this->new_contact.n_name)) return;
-	if (ft_empty("Phone number", this->new_contact.number)) return;
-	if (this->new_contact.number.find_first_not_of("0123456789") != std::string::npos)
+	start = value.find_first_not_of(" \t");
+	end = value.find_last_not_of(" \t");
+	value = value.substr(start, end - start + 1);
+	//optionnel
+	alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	if (prompt != "Phone number" && value.find_first_not_of(alpha) != std::string::npos)
+	{
+		
+		std::cout << "Enter a valid " << prompt << " !" << std::endl;
+		return (true);
+	}
+	else if (prompt == "Phone number" && value.find_first_not_of("0123456789") != std::string::npos)
 	{
 		std::cout << "..Phone number can only contain numbers!" << std::endl;
-		return;
+		return (true);
 	}
-	if (ft_empty("Darkest secret", this->new_contact.secret)) return;
 
+	this->new_contact.ft_set(prompt, value);
+	return (false);
+}
+
+void PhoneBook::ft_add(void)
+{
+	if (ft_save("First name")) return;
+	if (ft_save("Last name")) return;
+	if (ft_save("Nickname")) return;
+	if (ft_save("Phone number")) return;
+	if (ft_save("Darkest secret")) return;
 	this->i = this->i % 8;
 	this->contacts[this->i] = this->new_contact;
 	++(this->i);
 	return ;
 }
 
-
-std::string PhoneBook::ft_trunc(const std::string str) {
+std::string PhoneBook::ft_trunc(const std::string str)
+{
 	if (str.length() > 10)
 		return str.substr(0, 9) + ".";
 	return str;
 }
 
-void	PhoneBook::ft_printab(void) const {
+void	PhoneBook::ft_printab(void) const
+{
 	std::cout << std::setw(10) << "Index" << "|"
 	<< std::setw(10) << "First Name" << "|"
 	<< std::setw(10) << "Last Name" << "|"
 	<< std::setw(10) << "Nickname" << "|";
 }
 
-void	PhoneBook::ft_print(const size_t idx) {
+void	PhoneBook::ft_print(const size_t idx)
+{
 
 	if (this->contacts[idx - 1].ft_get("First Name").empty())
 	{
@@ -108,7 +110,6 @@ void	PhoneBook::ft_print(const size_t idx) {
 	<< std::setw(10) << ft_trunc(this->contacts[idx - 1].ft_get("Darkest secret")) << "|" << std::endl;
 }
 
-// Penser à ajouter le . en fin de troncage
 void PhoneBook::ft_search(void)
 {
 	int			j;

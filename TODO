@@ -1,0 +1,60 @@
+ex02 : il faut juste  refaire un main.cpp qui permettra d'afficher les memes choses
+que 19920104_091532.log (mais avec gettimeofday() d'aujourd'hui)
+
+https://lodev.org/cgtutor/raycasting.html#Performance
+
+
+	while (dest.empty() || dest.find_first_not_of(" \t") == std::string::npos)
+	{
+		if (!std::cin.eof())
+		{
+			std::cout << ".." << prompt << " cannot be empty!" << std::endl;
+		}	
+		else
+			return (true);
+		std::cout << prompt <<":";
+		std::getline(std::cin, dest);//Ca oblige le user à finir d'entrer le contact
+	}
+
+
+
+
+
+bool PhoneBook::ft_empty(const std::string& prompt, std::string& dest)
+{
+
+	//ON FAIT UN FT_SET QUI RENVOIE L'ADRESSE DE CHAQUE ATTRIBUT
+	std::cout << prompt <<":";
+	std::getline(std::cin, dest);
+	if (std::cin.eof())
+		std::cout << std::endl;
+	//si find_first_not_of va jusqu'à la taille maximale d'une string (npos),
+	//c'est qu'il n'a pas trouvé autre chose que des espaces et des tabultations 
+	if (dest.empty() || dest.find_first_not_of(" \t") == std::string::npos)
+	{
+		if (!std::cin.eof())
+			std::cout << ".." << prompt << " cannot be empty!" << std::endl;
+		return (true);
+	}
+
+	//On reformate new_contact pour retirer les espaces avant et après
+	size_t	start = dest.find_first_not_of(" \t");
+	size_t	end = dest.find_last_not_of(" \t");
+	dest = dest.substr(start, end - start + 1);
+
+	//std::string	value;
+
+	//value = dest;
+	//this->new_contact.ft_set(prompt, value);
+
+
+	//à tester
+	//std::string	alphabetic = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	//if ((dest.find_first_of(" \t") != std::string::npos && prompt != "Darkest secret")
+	//	|| (dest.find_first_not_of(alphabetic) != std::string::npos && prompt != "Phone number"))
+	//{
+	//	std::cout << std::endl << "Enter a valid " << prompt << " !" << std::endl;
+	//	return (true);
+	//}
+	return (false);//booléen vrai si empty, faux sinon
+}
