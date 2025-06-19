@@ -27,7 +27,6 @@ PhoneBook::~PhoneBook(void)
 bool PhoneBook::ft_save(const std::string prompt)
 {
 	std::string	value;
-	std::string	alpha;
 	size_t		start;
 	size_t		end;
 
@@ -45,19 +44,18 @@ bool PhoneBook::ft_save(const std::string prompt)
 	end = value.find_last_not_of(" \t");
 	value = value.substr(start, end - start + 1);
 	//optionnel
-	alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	if (prompt != "Phone number" && value.find_first_not_of(alpha) != std::string::npos)
-	{
-		
-		std::cout << "Enter a valid " << prompt << " !" << std::endl;
-		return (true);
-	}
-	else if (prompt == "Phone number" && value.find_first_not_of("0123456789") != std::string::npos)
-	{
-		std::cout << "..Phone number can only contain numbers!" << std::endl;
-		return (true);
-	}
-
+	//std::string	alpha;
+	//alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	//if (prompt != "Phone number" && value.find_first_not_of(alpha) != std::string::npos)
+	//{	
+	//	std::cout << "Enter a valid " << prompt << " !" << std::endl;
+	//	return (true);
+	//}
+	//else if (prompt == "Phone number" && value.find_first_not_of("0123456789") != std::string::npos)
+	//{
+	//	std::cout << "..Phone number can only contain numbers!" << std::endl;
+	//	return (true);
+	//}
 	this->new_contact.ft_set(prompt, value);
 	return (false);
 }
