@@ -6,11 +6,10 @@
 /*   By: aisidore <aisidore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 18:58:05 by aisidore          #+#    #+#             */
-/*   Updated: 2025/04/29 19:00:48 by aisidore         ###   ########.fr       */
+/*   Updated: 2025/06/20 11:19:59 by aisidore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// main.cpp
 #include "PhoneBook.hpp"
 
 //Ctrl+D = EOF : on arrete de lire 5desactive std//cin) 
@@ -24,11 +23,11 @@
 //ca enclenche de nouveau EOF ce qui me fait sortir du programme (2eme else if)
 //Ctrl+D = le flux est terminé pour toute la durée du programme
 
-//Penser à supprimer l'exécutable et le dossier objet. Idem pour ex00
-int main(void) {
+int main(void)
+{
     
 	PhoneBook	phonebook(0); // Appel au constructeur
-	std::string buff;//Proteger buff ou on laisse C++ gerer sa taille trop grande ?
+	std::string buff;
 	
 	while (1)
 	{		
@@ -44,7 +43,6 @@ int main(void) {
 			break;
 		}
 	}
-    return (0);//le destructeur est appele. A chaque fin de fonction
-	//que ce soit un main ou autre
+    return (0);
 }
 

@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.class.cpp                                :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisidore <aisidore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 19:00:53 by aisidore          #+#    #+#             */
-/*   Updated: 2025/04/29 19:04:11 by aisidore         ###   ########.fr       */
+/*   Updated: 2025/06/20 11:20:12 by aisidore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-//i n'est pas un attribut constant, mais c'est pas grave
 PhoneBook::PhoneBook(int pi): i(pi)
 {
     return;
